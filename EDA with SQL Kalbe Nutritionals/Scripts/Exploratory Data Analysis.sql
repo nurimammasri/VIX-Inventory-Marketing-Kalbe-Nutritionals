@@ -33,7 +33,7 @@
 --	Berapa rata-rata umur customer jika dilihat dari marital statusnya ? 
 SELECT 
 	marital_status,
-	avg(age) AS avg_age
+	round(avg(age), 2)  AS avg_age
 FROM customer c 
 WHERE marital_status != ''
 GROUP BY 1;
@@ -43,7 +43,7 @@ SELECT
 	CASE WHEN gender = 0 THEN 'Wanita'
 	WHEN gender = 1 THEN 'Pria'
 	ELSE 'None' END,
-	avg(age) AS avg_age
+	round(avg(age), 2)  AS avg_age
 FROM customer c 
 GROUP BY 1;
 
@@ -56,7 +56,7 @@ JOIN store s
 ON t.store_id = s.store_id 
 GROUP BY 1
 ORDER BY 2 DESC 
-LIMIT 5;
+LIMIT 1;
 
 --	Tentukan nama produk terlaris dengan total amount terbanyak!
 SELECT 
@@ -67,4 +67,4 @@ JOIN product p
 ON t.product_id = p.product_id 
 GROUP BY 1
 ORDER BY 2 DESC 
-LIMIT 5;
+LIMIT 1;
